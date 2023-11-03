@@ -1,0 +1,41 @@
+trigger:
+- '*'
+
+jobs:
+- job: ExecuteSQLScript
+  displayName: 'Execute SQL Script'
+  pool:
+    vmImage: 'windows-latest'
+
+  steps:
+  - task: DownloadSecureFile@1
+    displayName: 'Download SQL Script'
+    inputs:
+      secureFile: '$(ScriptFolder)/YourSqlScript.sql' # Replace with the name of your secure file in Azure DevOps
+
+  - task: PowerShell@2
+    displayName: 'Execute PowerShell Script'
+    inputs:
+      targetType: 'inline'
+      script: |
+        $server = "$(ServerName)"
+        $database = "$(DatabaseName)"
+        $username = "$(Username)"
+        $password = "$(Password)"
+        
+        # Set the path to the SQL script
+        $scriptPath = "$(Pipeline.Workspace)\$(ScriptFolder)\YourSqlScript.sql"
+
+        try {
+            # Read the SQL script content
+            $sqlScript = Get-Content -Path $scriptPath -Raw
+
+            # Attempt to execute the SQL script
+            Invoke-Sqlcmd -ServerInstance $server -Database $database -Username $username -Password $password -Query $sqlScript
+
+            Write-Host "SQL script executed successfully."
+        }
+        catch {
+            Write-Host "Error executing SQL script: $_"
+            exit 1 # Fail the pipeline if there's an error
+        }

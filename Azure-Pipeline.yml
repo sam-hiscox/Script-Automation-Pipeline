@@ -11,7 +11,7 @@ jobs:
   - task: DownloadSecureFile@1
     displayName: 'Download SQL Script'
     inputs:
-      secureFile: '$(ScriptFolder)/YourSqlScript.sql' # Replace with the name of your secure file in Azure DevOps
+      secureFile: '$(ScriptFolder)/Test-Script-1.sql' # Replace with the name of your secure file in Azure DevOps
 
   - task: PowerShell@2
     displayName: 'Execute PowerShell Script'

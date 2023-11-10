@@ -1,5 +1,15 @@
 trigger:
 - '*'
+resources:
+  repositories:
+  - repository: test-db-scripts-repo
+    type: github
+    endpoint: sam-hiscox-github
+    name: https://github.com/sam-hiscox/test-db-scripts/tree/main
+    ref: main
+
+variables:
+- group: Script execution variables  # Reference the variable group here
 
 jobs:
 - job: ExecuteSQLScript

@@ -18,7 +18,6 @@ jobs:
 
   steps:
   - checkout: test-scripts
-
     - script: git pull origin main
     displayName: 'Fetch latest changes'
 

@@ -2,10 +2,9 @@ trigger:
 - '*'
 resources:
   repositories:
-  - repository: test-db-scripts-repo
-    type: github
-    endpoint: sam-hiscox-github
-    name: https://github.com/sam-hiscox/test-db-scripts/tree/main
+  - repository: test-scripts
+    type: git
+    name: Testing-Stuff
     ref: main
 
 variables:
@@ -18,10 +17,13 @@ jobs:
     vmImage: 'windows-latest'
 
   steps:
-  - task: DownloadSecureFile@1
-    displayName: 'Download SQL Script'
+#checkout referenced repository
+  - checkout: test-scripts
+#Execute the contents of the file Test-Script-1.sql
+  - task: PowerShell@2
     inputs:
-      secureFile: "$(ScriptFolder)/Test-Script-1.sql" # Replace with the name of your secure file in Azure DevOps
+      targetType: 'inline'
+      script: 'Get-Content -Path $(Build.SourcesDirectory)\Test-Script-1.sql'
 
   - task: PowerShell@2
     displayName: 'Execute PowerShell Script'

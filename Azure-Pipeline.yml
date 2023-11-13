@@ -17,9 +17,6 @@ jobs:
     vmImage: 'windows-latest'
 
   steps:
-  - script: git fetch
-    displayName: 'Fetch latest changes'  
-
   - checkout: test-scripts
   - task: PowerShell@2
     displayName: 'Execute PowerShell Script'

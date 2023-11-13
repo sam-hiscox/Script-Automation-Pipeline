@@ -31,6 +31,9 @@ jobs:
         # Set the path to the SQL script
         $scriptPath = 'test-scripts/Test-Script-1.sql'
 
+        Write-Host "SQL script content:"
+        Write-Host $sqlScript
+
         try {
             # Read the SQL script content
             $sqlScript = Get-Content -Path $scriptPath -Raw

@@ -8,7 +8,7 @@ resources:
     ref: main
 
 variables:
-- group: Script execution variables  # Reference the variable group here
+- group: Script execution variables
 
 jobs:
 - job: ExecuteSQLScript
@@ -17,14 +17,7 @@ jobs:
     vmImage: 'windows-latest'
 
   steps:
-#checkout referenced repository
   - checkout: test-scripts
-#Execute the contents of the file Test-Script-1.sql
-  - task: PowerShell@2
-    inputs:
-      targetType: 'inline'
-      script: 'Get-Content -Path $(Build.SourcesDirectory)\Test-Script-1.sql'
-
   - task: PowerShell@2
     displayName: 'Execute PowerShell Script'
     inputs:
@@ -36,7 +29,7 @@ jobs:
         $password = "$(Password)"
         
         # Set the path to the SQL script
-        $scriptPath = "$(Pipeline.Workspace)\$(ScriptFolder)\YourSqlScript.sql"
+        $scriptPath = '$(Build.SourcesDirectory)\Test-Script-1.sql'
 
         try {
             # Read the SQL script content

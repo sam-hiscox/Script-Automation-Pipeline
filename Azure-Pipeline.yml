@@ -29,7 +29,7 @@ jobs:
         $password = "$(Password)"
         
         # Set the path to the SQL script
-        $scriptPath = '$(Build.SourcesDirectory)\Test-Script-1.sql'
+        $scriptPath = 'test-scripts/Test-Script-1.sql'
 
         try {
             # Read the SQL script content

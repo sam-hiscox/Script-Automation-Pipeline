@@ -29,20 +29,12 @@ jobs:
         $password = "$(Password)"
         
         # Set the path to the SQL script
-        $scriptPath = 'Testing-Stuff/test-scripts/test-script-2'
-
-        Write-Host "Server: $server"
-        Write-Host "Database: $database"
-        Write-Host "Username: $username"
-        Write-Host "Password: $password"
-        
-        # Read the SQL script content
-        $sqlScript = Get-Content -Path $scriptPath -Raw
-
-        Write-Host "SQL script content:"
-        Write-Host $sqlScript
+        $scriptPath = '$(Build.SourcesDirectory)\Test-Script-2.sql'
 
         try {
+            # Read the SQL script content
+            $sqlScript = Get-Content -Path $scriptPath -Raw
+
             # Attempt to execute the SQL script
             Invoke-Sqlcmd -ServerInstance $server -Database $database -Username $username -Password $password -Query $sqlScript
 

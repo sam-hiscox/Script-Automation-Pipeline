@@ -18,8 +18,8 @@ jobs:
 
   steps:
   - checkout: test-scripts
-    - script: git pull origin main
-      displayName: 'Fetch latest changes'
+  - script: git pull origin main
+    displayName: 'Fetch latest changes'
 
   - task: PowerShell@2
     displayName: 'Execute PowerShell Script'

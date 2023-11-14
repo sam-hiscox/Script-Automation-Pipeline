@@ -31,7 +31,7 @@ jobs:
         # Set the path to the SQL script
         $scriptPath = "$(ScriptFolder)"
 
-        Write-Host "Script folder: $ScriptFolder"
+        Write-Host "Script folder: $(ScriptFolder)"
         Write-Host "Server: $server"
         Write-Host "Database: $database"
         Write-Host "Username: $username"
@@ -40,7 +40,7 @@ jobs:
         # Read the SQL script content
         $sqlScript = Get-Content -Path $ScriptFolder/$ScriptName -Raw
 
-        Write-Host "Executing SQL script: $ScriptName"
+        Write-Host "Executing SQL script: $(ScriptName)"
         Write-Host "SQL script content:"
         Write-Host $sqlScript
 

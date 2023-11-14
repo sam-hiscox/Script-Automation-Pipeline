@@ -9,7 +9,7 @@ resources:
 
 variables:
 - group: Script execution variables
-- name: SscriptFolder
+- name: ScriptFolder
   value: 'your_default_value'
 
 jobs:

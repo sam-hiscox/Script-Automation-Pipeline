@@ -29,18 +29,18 @@ jobs:
         $password = "$(Password)"
         
         # Set the path to the SQL script
-        $scriptPath = "$(ScriptFolder)"
+        $scriptPath = ${env:SCRIPTFOLDER}
 
-        Write-Host "Script folder: $(ScriptFolder)"
+        Write-Host "Script folder: ${env:SCRIPTFOLDER}"
         Write-Host "Server: $server"
         Write-Host "Database: $database"
         Write-Host "Username: $username"
         Write-Host "Password: $password"
         
         # Read the SQL script content
-        $sqlScript = Get-Content -Path $ScriptFolder/$ScriptName -Raw
+        $sqlScript = Get-Content -Path ${env:SCRIPTFOLDER}/${env:SCRIPTNAME} -Raw
 
-        Write-Host "Executing SQL script: $(ScriptName)"
+        Write-Host "Executing SQL script: ${env:SCRIPTNAME}"
         Write-Host "SQL script content:"
         Write-Host $sqlScript
 

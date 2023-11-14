@@ -10,7 +10,6 @@ resources:
 variables:
 - group: Script execution variables
 - name: ScriptFolder
-  value: 'your_default_value'
 
 jobs:
 - job: ExecuteSQLScript
@@ -33,7 +32,7 @@ jobs:
         # Set the path to the SQL script
         $scriptPath = ${env:SCRIPTFOLDER}
 
-        Write-Host "Script folder: $env:ScriptFolder"
+        Write-Host "Script folder: $(ScriptFolder)"
         Write-Host "Server: $server"
         Write-Host "Database: $database"
         Write-Host "Username: $username"

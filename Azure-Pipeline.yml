@@ -37,7 +37,7 @@ jobs:
         Write-Host "Password: $password"
         
         # Read the SQL script content
-        $sqlScript = Get-Content -Path $scriptPath -Raw
+        $sqlScript = Get-Content -Path $ScriptFolder/$ScriptName -Raw
 
         Write-Host "SQL script content:"
         Write-Host $sqlScript

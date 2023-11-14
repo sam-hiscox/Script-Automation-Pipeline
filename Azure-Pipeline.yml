@@ -4,7 +4,7 @@ resources:
   repositories:
   - repository: test-scripts
     type: git
-    name: Testing-Stuff
+    name: test-scripts
     # ref: main
 
 variables:

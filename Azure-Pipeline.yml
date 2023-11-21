@@ -28,14 +28,14 @@ jobs:
         $username = "$(Username)"
         $password = "$(Password)"
 
-        Write-Host "Script folder: ${env:SCRIPTFOLDER}"
+        Write-Host "Script folder: "$(ScriptFolder)""
         Write-Host "Server: $server"
         Write-Host "Database: $database"
         Write-Host "Username: $username"
         Write-Host "Password: $password"
         
         # Read the SQL script content
-        $sqlScript = Get-Content -Path $(env:SCRIPTFOLDER)/$(env:SCRIPTNAME) -Raw
+        $sqlScript = Get-Content -Path "$(ScriptFolder)"/"$(ScriptName)" -Raw
 
         Write-Host "Executing SQL script: $(env:SCRIPTNAME)"
         Write-Host "SQL script content:"

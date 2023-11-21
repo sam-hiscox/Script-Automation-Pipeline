@@ -28,7 +28,7 @@ jobs:
         $username = "$(Username)"
         $password = "$(Password)"
 
-        Write-Host "Script folder: $(env:SCRIPTFOLDER)"
+        Write-Host "Script folder: ${env:SCRIPTFOLDER}"
         Write-Host "Server: $server"
         Write-Host "Database: $database"
         Write-Host "Username: $username"
